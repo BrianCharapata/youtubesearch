@@ -1,25 +1,23 @@
-const GITHUB_SEARCH_URL = 'https://api.github.com/search/repositories';
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function getDataFromApi(searchTerm, callback) {
   const query = {
+    part: 'snippet',
+    key: 'AIzaSyDEJRKRDL4KuesnMkxDzlgAgx2gfiznIGI',
     q: `${searchTerm} in:name`,
-    per_page: 20
   }
-  $.getJSON(GITHUB_SEARCH_URL, query, callback);
+  $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
 }
 
 function renderResult(result) {
   return `
     <div>
-      <h2>
-      <a class="js-result-name" href="${result.html_url}" target="_blank">${result.name}</a> by <a class="js-user-name" href="${result.owner.html_url}" target="_blank">${result.owner.login}</a></h2>
-      <p>Number of watchers: <span class="js-watchers-count">${result.watchers_count}</span></p>
-      <p>Number of open issues: <span class="js-issues-count">${result.open_issues}</span></p>
+      <img src=${result.snippet.thumbnails.default.url} alt=result.snippet.title>
     </div>
   `;
 }
 
-function displayGitHubSearchData(data) {
+function displayYouTubeSearchData(data) {
   const results = data.items.map((item, index) => renderResult(item));
   $('.js-search-results').html(results);
 }
@@ -31,7 +29,7 @@ function watchSubmit() {
     const query = queryTarget.val();
     // clear out the input
     queryTarget.val("");
-    getDataFromApi(query, displayGitHubSearchData);
+    getDataFromApi(query, displayYouTubeSearchData);
   });
 }
 
