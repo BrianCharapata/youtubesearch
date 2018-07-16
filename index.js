@@ -39,7 +39,7 @@ function watchSubmit() {
     getDataFromApi(query, displayYouTubeSearchData);
   });
 }
-
+/*
 function showErr(err) {
   const outputElem = $('.js-output');
   
@@ -51,5 +51,5 @@ function showErr(err) {
     .prop('hidden', false)
     .html(errMsg);
 }
-
+*/
 $(watchSubmit);
