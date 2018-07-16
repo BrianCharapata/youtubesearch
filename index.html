@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>AJAX & ARIA Live</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" rel="stylesheet"/>
-    <link href="index.css" rel="stylesheet"/>
-    
-  </head>
-  <body>
-      <div class="container">
-        <form action="#" name="github-search" class="search">
-          <label for="search-username">Enter a GitHub username: </label>
-          <input type="text" name="username" id="search-username" required/>
-          <button type="submit">Look up</button>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>You Tube Search</title>
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
+        <link href="index.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+      <main role="main" >
+        <div class="container">
+        <h1>Search YouTube Titles</h1>
+        <form action="#" class="js-search-form" aria-live="assertive">
+          <label for="query"></label>
+          <input type="text" class="js-query">
+          <button type="submit">Search</button>
         </form>
-        
-        <!-- aria-live tells the screen reader to watch this part of the DOM
-        for changes. We add `hidden` so that users won't be confused 
-        by the presence of an empty element.-->
-        <main role="main" class="js-output" aria-live="assertive" hidden>
-          <!--our results will go here!-->
-        </main>
-      </div>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-    
-  </body>
+          
+        <h2>Results</h2>
+        <div class="js-search-results">
+
+        </div>
+        </div>
+      </main>
+      <script src="index.js"></script>
+    </body>
 </html>
